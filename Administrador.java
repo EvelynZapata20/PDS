@@ -18,17 +18,17 @@ public class Administrador {
         this.representanteLegal = entrada.nextLine();
         System.out.println("Cedula del Representante Legal: ");
         this.cedulaRepresentante = entrada.nextInt();
-        System.out.println("Teléfono de contacto: ");
+        System.out.println("Telefono de contacto: ");
         this.telefono = entrada.nextInt();
         System.out.println("NIT: ");
         this.nit = entrada.nextInt();
-        System.out.println("Correo Electónico: ");
+        System.out.println("Correo Electronico: ");
         this.correoElectronico = entrada.nextLine();
         System.out.println("Nombre del negocio: ");
         this.nombreTienda = entrada.nextLine();
-        System.out.println("Número del negocio: ");
+        System.out.println("Numero del negocio: ");
         this.numeroLocal = entrada.nextInt();
-        System.out.println("Cree una contraseña: ");
+        System.out.println("Cree una contrase�a: ");
         this.contrasenia = entrada.nextLine();
 
     }
@@ -38,22 +38,22 @@ public class Administrador {
         int intentos = 0;
         while (verificacion != true && intentos<5) {
             if(cedula == this.cedulaRepresentante && contrasenia == this.contrasenia){
-                System.out.println("...Ha iniciado sesión correctamente...");
+                System.out.println("...Ha iniciado sesion correctamente...");
                 verificacion = true;
             }
             else{
-                System.out.println("...Credencuiales incorrectos...\t...Intente de nuevo...");
+                System.out.println("...Credenciales incorrectas...\t...Intente de nuevo...");
                 intentos++;
             }
         }
     }
     
-    public Producto crearProducto(){
+    /*public Producto crearProducto(){
         Producto nuevoProducto = new Producto();
         return nuevoProducto;
-    }
+    }*/
     
-    public void eliminarProducto(){
+    /*public void eliminarProducto(){
     
-    }
+    }*/
 }
