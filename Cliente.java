@@ -49,6 +49,7 @@ public class Cliente {
       }
       else if (productosEncontrados.size()==0){
         System.out.println("El producto no se encuentra");
+        System.out.println("");
       }
   }
 }
