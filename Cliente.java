@@ -10,51 +10,42 @@ public class Cliente {
     Cliente.buscarProducto(nombreProducto);
       while (true) {
         System.out.println("¿Desea buscar otro producto?");
-	String otroProducto=scan.next(); 
-	  if (otroProducto.equalsIgnoreCase("si")) {
-	    System.out.println("Ingrese el nombre del nuevo producto");
-            String nuevoProducto= scan.next();
-	    Cliente.buscarProducto(nuevoProducto); 
-	  }
-	  else {
-            System.out.println("Búsqueda finalizada");
-	    break;
-	  }
+        String otroProducto=scan.next(); 
+        if (otroProducto.equalsIgnoreCase("si")) {
+          System.out.println("Ingrese el nombre del nuevo producto");
+          String nuevoProducto= scan.next();
+          Cliente.buscarProducto(nuevoProducto); 
+        }
+        else {
+          System.out.println("Búsqueda finalizada");
+          break;
+        }
       }
   }
-	 
+     
   public static void buscarProducto (String nombreProducto) {
-    Producto p1=new Producto(135353, "Computador 123", 5000, "Cualquier cosa");
-    Producto p2=new Producto(177753, "Computador eyss", 2000, "Cualquier cosa");
-    Producto p3=new Producto(193743, "Computador 123", 120000, "Cualquier cosa");
-    Producto p4=new Producto(193743, "Computador Evelyn", 500, "Cualquier cosa");
-	    
-    Producto.productos.add(p1);
-    Producto.productos.add(p2);
-    Producto.productos.add(p3);
-    Producto.productos.add(p4);
-	    
     ArrayList<Producto> productosEncontrados = new ArrayList<Producto>();  
     int i=1;
     
       while (i<=Producto.productos.size()) {
-        if (Producto.productos.get(i-1).getNombre().contains(nombreProducto)){
+        if (Producto.productos.get(i-1).getNombre().toLowerCase().contains(nombreProducto.toLowerCase())){
           productosEncontrados.add(Producto.productos.get(i-1));  
-	}
-	i++;
+        }
+        i++;
       }
-	    
+        
       if (productosEncontrados.size()>0){
         Collections.sort(productosEncontrados);
-	System.out.println("PRODUCTOS ENCONTRADOS:");                 
-	  for(Producto producto: productosEncontrados ){
-	    System.out.println("");
-	    System.out.println("Referencia: "+producto.getReferencia());
-	    System.out.println("Nombre: " + producto.getNombre());
-	    System.out.println("Precio:" + producto.getPrecio());
-	    System.out.println("Descripción: " + producto.getDescripcion());
-	    System.out.println("");
-          }
+        System.out.println(""); 
+        System.out.println("PRODUCTOS ENCONTRADOS:");                 
+        for(Producto producto: productosEncontrados ){
+          System.out.println("");
+          System.out.println("Referencia: "+producto.getReferencia());
+          System.out.println("Nombre: " + producto.getNombre());
+          System.out.println("Precio:" + producto.getPrecio());
+          System.out.println("Descripción: " + producto.getDescripcion());
+          System.out.println("");
+        }
       }
       else if (productosEncontrados.size()==0){
         System.out.println("El producto no se encuentra");
