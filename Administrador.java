@@ -82,9 +82,9 @@ public class Administrador {
             {
                 ioe.printStackTrace();
             }
-
         }
-
+            System.out.println("Se ha registrado el usuario correctamente");
+            this.inicioSesion();
     }
 
     public void inicioSesion() {
@@ -192,6 +192,5 @@ public class Administrador {
                 }
             }
         }
-
     }
 }
