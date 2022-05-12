@@ -154,7 +154,6 @@ public class Administrador {
             contrasenias.add(verfContra);
         }
 
-        
         boolean verificacion = false;
         int intentos = 0;
 
@@ -174,6 +173,7 @@ public class Administrador {
             }
             if(posicion<0){
                 System.out.println("No se ha encontrado la cedula ingresada");
+                this.inicioSesion();
                 break;
             }
             System.out.println("Ingresa la contraseña");
@@ -186,7 +186,10 @@ public class Administrador {
             else{
                 System.out.println("La contraseña es incorrecta");
                 intentos++;
-                if(intentos==5){System.out.println("Número de intentos excedido");}
+                if(intentos==5){
+                    System.out.println("Número de intentos excedido");
+                    this.inicioSesion();
+                }
             }
         }
 
