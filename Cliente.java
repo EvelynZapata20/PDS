@@ -1,55 +1,48 @@
+import java.lang.String;
+import java.io.*;
+import java.util.*;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Collections;
+
 public class Cliente {
-  public static void main (String [] args) {
-    Scanner scan=new Scanner(System.in);
-    System.out.println("-- BUSCAR PRODUCTO --");
-    System.out.println("Ingrese el nombre del producto");
-    String nombreProducto=scan.next();
-    Cliente.buscarProducto(nombreProducto);
-      while (true) {
-        System.out.println("¿Desea buscar otro producto?");
-        String otroProducto=scan.next(); 
-        if (otroProducto.equalsIgnoreCase("si")) {
-          System.out.println("Ingrese el nombre del nuevo producto");
-          String nuevoProducto= scan.next();
-          Cliente.buscarProducto(nuevoProducto); 
-        }
-        else {
-          System.out.println("Búsqueda finalizada");
-          break;
-        }
-      }
-  }
-     
   public static void buscarProducto (String nombreProducto) {
-    ArrayList<Producto> productosEncontrados = new ArrayList<Producto>();  
-    int i=1;
-    
-      while (i<=Producto.productos.size()) {
-        if (Producto.productos.get(i-1).getNombre().toLowerCase().contains(nombreProducto.toLowerCase())){
-          productosEncontrados.add(Producto.productos.get(i-1));  
+    ArrayList<TxtEnJava> productosEncontrados = new ArrayList<TxtEnJava>(); 
+      try{
+        File file = new File("usuarios.txt");
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String st;
+        String [] arreglo;
+        while ((st = br.readLine()) != null){
+          arreglo = st.split(",");
+          if(arreglo[3].toLowerCase().contains(nombreProducto.toLowerCase())){
+            int id= Integer.parseInt(arreglo[0]);
+            String descripcion= arreglo[1];
+            double precio= Double.parseDouble(arreglo[2]);
+            String nombre= arreglo[3];
+            String almacen= arreglo[4];
+            TxtEnJava t=new TxtEnJava (id, descripcion, precio, nombre, almacen);
+            productosEncontrados.add(t);
+          }
         }
-        i++;
-      }
-        
+      }catch(Exception exception){ }
+      
       if (productosEncontrados.size()>0){
         Collections.sort(productosEncontrados);
         System.out.println(""); 
         System.out.println("PRODUCTOS ENCONTRADOS:");                 
-        for(Producto producto: productosEncontrados ){
+        for(TxtEnJava producto: productosEncontrados ){
           System.out.println("");
-          System.out.println("Referencia: "+producto.getReferencia());
-          System.out.println("Nombre: " + producto.getNombre());
-          System.out.println("Precio:" + producto.getPrecio());
+          System.out.println("Referencia: "+producto.getId());
           System.out.println("Descripción: " + producto.getDescripcion());
+          System.out.println("Precio:" + producto.getPrecio());
+          System.out.println("Nombre: " + producto.getNombre());
+          System.out.println("Empresa: " + producto.getEmpresa());
           System.out.println("");
         }
       }
+        
       else if (productosEncontrados.size()==0){
         System.out.println("El producto no se encuentra");
         System.out.println("");
-      }
+      } 
   }
 }
