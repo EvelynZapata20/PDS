@@ -7,36 +7,122 @@ public class Administrador {
     private String representanteLegal;
     private int cedulaRepresentante;
     private int telefono;
-    private int nit;
+    private long nit;
     private String correoElectronico;
     private String nombreTienda;
     private int numeroLocal;
     private String contrasenia;
 
-    public void registroAdministrador() {
+    public void setRepresentanteLegal(String representante){
+        this.representanteLegal = representante;
+    }
 
-        System.out.println("Representante Legal del local: ");
-        this.representanteLegal = entrada.next();
-        System.out.println("Cedula del Representante Legal: ");
+    public String getRepresentanteLegal(){
+        return this.representanteLegal;
+    }
+
+    public void setCedula(int cedula){
+        this.cedulaRepresentante = cedula;
+    }
+
+    public int getCedula(){
+        return this.cedulaRepresentante;
+    }
+    
+    public void setTelefono(int telefono){
+        this.telefono = telefono;
+    }
+
+    public int getTelefono(){
+        return this.telefono;
+    }
+    
+    public void setNit(long nit){
+        this.nit = nit;
+    }
+
+    public long getNit(){
+        return this.nit;
+    }
+    
+    public void setCorreoElectronico(String correo){
+        this.correoElectronico = correo;
+    }
+
+    public String getCorreoElectronico(){
+        return this.correoElectronico;
+    }
+    
+    public void setNombreTienda(String tienda){
+        this.nombreTienda = tienda;
+    }
+
+    public String getNombreTienda(){
+        return this.nombreTienda;
+    }
+    
+    public void setLocal(int local){
+        this.numeroLocal = local;
+    }
+
+    public int getLocal(){
+        return this.numeroLocal;
+    }
+    
+    public void setContrasenia(String contra){
+        this.contrasenia = contra;
+    }
+
+    public String getContrasenia(){
+        return this.contrasenia;
+    }
+    
+    public void registroAdministrador() 
+    {
+        System.out.println("-------------------------------------------");
+        System.out.println("|         REGISTRO DE ADMINISTRADOR       |");
+        System.out.println("-------------------------------------------\n\n\n");
+        System.out.println("--------------------------------------");
+        System.out.print("    Representante Legal del local: \n--->");
+        this.representanteLegal = entrada.nextLine();
+        System.out.println("--------------------------------------");
+        System.out.print("    Cédula del Representante Legal: \n--->");
         this.cedulaRepresentante = entrada.nextInt();
-        System.out.println("Telefono de contacto: ");
+        System.out.println("--------------------------------------");
+        System.out.print("  Teléfono de contacto: \n--->");
         this.telefono = entrada.nextInt();
-        System.out.println("NIT: ");
-        this.nit = entrada.nextInt();
-        System.out.println("Correo Electronico: ");
+        System.out.println("--------------------------------------");
+        System.out.print("  NIT: \n--->");
+        this.nit = entrada.nextLong();
+        System.out.println("--------------------------------------");
+        System.out.print("  Correo Electrónico: \n--->");
         this.correoElectronico = entrada.next();
-        System.out.println("Nombre del negocio: ");
+        while(this.correoElectronico.contains("@") == false){
+            System.out.print("¡Error! Ingrese un correo válido\n    Correo Electronico: \n--->");
+            this.correoElectronico = entrada.next();
+        }
+        System.out.println("--------------------------------------");
+        System.out.print("  Nombre del negocio: \n--->");
         this.nombreTienda = entrada.next();
-        System.out.println("Numero del negocio(Local): ");
+        System.out.println("--------------------------------------");
+        System.out.print("  Número del negocio(Local): \n--->");
         this.numeroLocal = entrada.nextInt();
         String contra1;
         String contra2;
 
-        System.out.println("Cree una contraseña: ");
+        System.out.println("--------------------------------------");
+        System.out.print("Cree una contraseña de mínimo 8 caracteres\n--->");
         contra1 = entrada.next();
 
+        while(contra1.length()<8){
+            System.out.println("¡Error!\nAsegúrese de utizar 8 caracteres");
+            System.out.print("Cree una contraseña de mínimo 8 caracteres\n--->");
+            contra1 = entrada.next();
+        }
+
         while(true){
-            System.out.println("Confirmar contraseña: ");
+            System.out.println("--------------------------------------");
+            System.out.println("Confirmar contraseña: \n--->");
             contra2 = entrada.next();
 
             if(!(contra1.equals(contra2))){
@@ -83,8 +169,20 @@ public class Administrador {
                 ioe.printStackTrace();
             }
         }
-            System.out.println("Se ha registrado el usuario correctamente");
-            this.inicioSesion();
+        System.out.println("-------------------------------------------");
+        System.out.println("|Se ha registrado el usuario correctamente|");
+        System.out.println("-------------------------------------------\n");
+        System.out.println("Redireccionando");
+        try
+        {for(int i=0; i<4; i++){
+                Thread.sleep(1000);
+                System.out.print(".");
+            }
+        }catch(InterruptedException e){}
+        for(int i=0; i<10; i++){
+            System.out.print("\n");
+        }
+        this.inicioSesion();
     }
 
     public void inicioSesion() {
@@ -156,10 +254,13 @@ public class Administrador {
 
         boolean verificacion = false;
         int intentos = 0;
+        System.out.println("\n\n-------------------------------------------");
+        System.out.println("|              INICIAR SESIÓN             |");
+        System.out.println("-------------------------------------------\n");
 
-        System.out.println("Ingrese cedula");
+        System.out.println("\n----------------------------");
+        System.out.print("Ingrese cedula\n--->");
         int comproCed = entrada.nextInt();
-        System.out.println(comproCed);
         String comproContra="";
         int posicion = -1;
 
@@ -172,22 +273,40 @@ public class Administrador {
                 }
             }
             if(posicion<0){
-                System.out.println("No se ha encontrado la cedula ingresada");
+                System.out.println("¡Error!No se ha encontrado la cédula ingresada");
                 this.inicioSesion();
                 break;
             }
-            System.out.println("Ingresa la contraseña");
+            System.out.println("----------------------------");
+            System.out.print("Ingresa la contraseña\n--->");
             comproContra = entrada.next();
 
             if(contrasenias.get(posicion).equals(comproContra) || (((this.contrasenia!=null) && (this.contrasenia.equals(comproContra))))){
-                System.out.println("Ha iniciado sesión correctamente");
+                System.out.println("\n-------------------------------------------");
+                System.out.println("|            HA INICIADO SESIÓN           |");
+                System.out.println("-------------------------------------------\n");
+                System.out.println("Redireccionando");
+                try
+                {for(int i=0; i<4; i++){
+                        Thread.sleep(1000);
+                        System.out.print(".");
+                    }
+                }catch(InterruptedException e){}
                 verificacion = true;
             }
             else{
                 System.out.println("La contraseña es incorrecta");
                 intentos++;
                 if(intentos==5){
-                    System.out.println("Número de intentos excedido");
+                    System.out.println("----Número de intentos excedido----");
+                    System.out.println("Redireccionando");
+                    //PONER REDIRECCIONAMIENTO
+                    try
+                    {for(int i=0; i<4; i++){
+                            Thread.sleep(1000);
+                            System.out.print(".");
+                        }
+                    }catch(InterruptedException e){}
                     this.inicioSesion();
                 }
             }
