@@ -83,19 +83,19 @@ public class Administrador {
         System.out.println("|         REGISTRO DE ADMINISTRADOR       |");
         System.out.println("-------------------------------------------\n\n\n");
         System.out.println("--------------------------------------");
-        System.out.print("    Representante Legal del local: \n--->");
-        this.representanteLegal = entrada.nextLine();
+        System.out.print("    Primer nombre del representante legal del local: \n--->");
+        this.representanteLegal = entrada.next();
         System.out.println("--------------------------------------");
-        System.out.print("    Cédula del Representante Legal: \n--->");
+        System.out.print("    Cédula del representante legal: \n--->");
         this.cedulaRepresentante = entrada.nextInt();
         System.out.println("--------------------------------------");
-        System.out.print("  Teléfono de contacto: \n--->");
+        System.out.print("  Teléfono fijo: \n--->");
         this.telefono = entrada.nextInt();
         System.out.println("--------------------------------------");
         System.out.print("  NIT: \n--->");
         this.nit = entrada.nextLong();
         System.out.println("--------------------------------------");
-        System.out.print("  Correo Electrónico: \n--->");
+        System.out.print("  Correo electrónico: \n--->");
         this.correoElectronico = entrada.next();
         while(this.correoElectronico.contains("@") == false){
             System.out.print("¡Error! Ingrese un correo válido\n    Correo Electronico: \n--->");
@@ -268,7 +268,7 @@ public class Administrador {
             for(int i = 0; i<cedulas.size();i++){
                 if(cedulas.get(i) == comproCed){
                     posicion=i;
-                }else if(((this.contrasenia!=null) && (this.contrasenia.equals(comproContra)))){
+                }else if(((this.cedulaRepresentante!=0) && (this.cedulaRepresentante==comproCed))){
                     posicion=0;
                 }
             }
@@ -293,6 +293,8 @@ public class Administrador {
                     }
                 }catch(InterruptedException e){}
                 verificacion = true;
+                TxtEnJava txt= new TxtEnJava();
+                txt.main();
             }
             else{
                 System.out.println("La contraseña es incorrecta");
@@ -300,7 +302,6 @@ public class Administrador {
                 if(intentos==5){
                     System.out.println("----Número de intentos excedido----");
                     System.out.println("Redireccionando");
-                    //PONER REDIRECCIONAMIENTO
                     try
                     {for(int i=0; i<4; i++){
                             Thread.sleep(1000);
