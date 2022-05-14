@@ -1,13 +1,19 @@
 import java.lang.String;
 import java.io.*;
 import java.util.*;
-import java.util.Scanner;
 
 public class Cliente {
-  public static void buscarProducto (String nombreProducto) {
+  public void buscarProducto () {
+    Scanner scan=new Scanner(System.in);
+    System.out.println("");
+    System.out.println("-------------------------------------------");
+    System.out.println("|             BUSCAR PRODUCTO             |");
+    System.out.println("-------------------------------------------\n");
+    System.out.print("Ingrese el nombre del producto: \n--->");
+    String nombreProducto=scan.next();
     ArrayList<TxtEnJava> productosEncontrados = new ArrayList<TxtEnJava>(); 
       try{
-        File file = new File("usuarios.txt");
+        File file = new File("productos.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
         String [] arreglo;
@@ -23,14 +29,15 @@ public class Cliente {
             productosEncontrados.add(t);
           }
         }
-      }catch(Exception exception){ }
+      } catch(Exception exception){ }
       
       if (productosEncontrados.size()>0){
         Collections.sort(productosEncontrados);
-        System.out.println(""); 
-        System.out.println("PRODUCTOS ENCONTRADOS:");                 
+        System.out.println("");
+        System.out.println("-------------------------------------------");
+        System.out.println("|          PRODUCTOS ENCONTRADOS          |");
+        System.out.println("-------------------------------------------\n");               
         for(TxtEnJava producto: productosEncontrados ){
-          System.out.println("");
           System.out.println("Referencia: "+producto.getId());
           System.out.println("Descripción: " + producto.getDescripcion());
           System.out.println("Precio:" + producto.getPrecio());
@@ -40,7 +47,7 @@ public class Cliente {
         }
       }
         
-      else if (productosEncontrados.size()==0){
+      if (productosEncontrados.size()==0){
         System.out.println("El producto no se encuentra");
         System.out.println("");
       } 
