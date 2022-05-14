@@ -8,16 +8,16 @@ public class Main {
       TxtEnJava txt= new TxtEnJava();
       Administrador administrar= new Administrador();
       Cliente cliente= new Cliente();
-       
-      System.out.println("-------------------------------------------");
-      System.out.println("|              MENÚ PRINCIPAL             |");
-      System.out.println("-------------------------------------------\n");               
-      System.out.println("Ingrese 0 para salir del programa");
-      System.out.println("Ingrese 1 para iniciar sesión como administrador");
-      System.out.println("Ingrese 2 para iniciar búsqueda como cliente");
       
         while(true){
+          System.out.println("-------------------------------------------");
+          System.out.println("|              MENÚ PRINCIPAL             |");
+          System.out.println("-------------------------------------------\n");               
+          System.out.println("Ingrese 0 para salir del programa");
+          System.out.println("Ingrese 1 para iniciar sesión como administrador");
+          System.out.println("Ingrese 2 para iniciar búsqueda como cliente");
           x=sc.nextInt();
+          
             if(x==0){
               System.out.println("Programa finalizado");
               break;
@@ -45,6 +45,7 @@ public class Main {
                 }
                 else {
                   System.out.println("Búsqueda finalizada");
+                  System.out.println("");
                   break;
                 }
               }
