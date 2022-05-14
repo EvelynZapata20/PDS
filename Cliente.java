@@ -18,7 +18,7 @@ public class Cliente {
         String st;
         String [] arreglo;
         while ((st = br.readLine()) != null){
-          arreglo = st.split(",");
+          arreglo = st.split("\t");
           if(arreglo[3].toLowerCase().contains(nombreProducto.toLowerCase())){
             int id= Integer.parseInt(arreglo[0]);
             String descripcion= arreglo[1];
