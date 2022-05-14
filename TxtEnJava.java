@@ -1,30 +1,27 @@
-    import java.io.*;
-    import java.util.*;
-    public class TxtEnJava
-    {
-   
-     private      int    id;
-     private      String descripcion;
-     private      double precio;
-     private      String    nombre;
-     private      String    empresa;
-                  File   FicheroProducto= new File("productos.txt");
+import java.util.*;
 
-                 ArrayList<TxtEnJava> cositas =new ArrayList<TxtEnJava>();
-                 TxtEnJava             objeto = null;
+public class TxtEnJava implements Comparable <TxtEnJava> {
+  private      int    id;
+  private      String descripcion;
+  private      double precio;
+  private      String    nombre;
+  private      String    empresa;
+  File   FicheroProducto= new File("productos.txt");
+
+  ArrayList<TxtEnJava> cositas =new ArrayList<TxtEnJava>();
+  TxtEnJava             objeto = null;
     
-   public TxtEnJava(int id,String descripcion,double precio,String nombre, String empresa)
-    {
-         this.id=id;
-         this.descripcion=descripcion;
-         this.precio=precio; 
-         this.nombre=nombre; 
-         this.empresa = empresa;
-    }             
-   public TxtEnJava(){} 
+  public TxtEnJava(int id,String descripcion,double precio,String nombre, String empresa) {
+    this.id=id;
+    this.descripcion=descripcion;
+    this.precio=precio; 
+    this.nombre=nombre; 
+    this.empresa = empresa;
+  }             
+  public TxtEnJava(){} 
    
    
-   public  int getId()
+  public  int getId()
    {
       return this.id;
        
@@ -355,7 +352,7 @@
      System.out.println("8. Salir");
    }
     
-  public  void main(String args[]) 
+  public  void main() 
    {
   boolean trueOrFalse = true;
    Scanner enter= new Scanner(System.in);
@@ -401,5 +398,18 @@
       default: break;
   }
     }
+    }
+    
+  @Override
+    public int compareTo(TxtEnJava t) {
+        if (this.precio<t.getPrecio()) {
+            return -1;
+        }
+        else if (this.precio>t.getPrecio()) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
     }
 }
