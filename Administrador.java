@@ -28,7 +28,7 @@ public class Administrador {
     public int getCedula(){
         return this.cedulaRepresentante;
     }
-    
+
     public void setTelefono(int telefono){
         this.telefono = telefono;
     }
@@ -36,7 +36,7 @@ public class Administrador {
     public int getTelefono(){
         return this.telefono;
     }
-    
+
     public void setNit(long nit){
         this.nit = nit;
     }
@@ -44,7 +44,7 @@ public class Administrador {
     public long getNit(){
         return this.nit;
     }
-    
+
     public void setCorreoElectronico(String correo){
         this.correoElectronico = correo;
     }
@@ -52,7 +52,7 @@ public class Administrador {
     public String getCorreoElectronico(){
         return this.correoElectronico;
     }
-    
+
     public void setNombreTienda(String tienda){
         this.nombreTienda = tienda;
     }
@@ -60,7 +60,7 @@ public class Administrador {
     public String getNombreTienda(){
         return this.nombreTienda;
     }
-    
+
     public void setLocal(int local){
         this.numeroLocal = local;
     }
@@ -68,7 +68,7 @@ public class Administrador {
     public int getLocal(){
         return this.numeroLocal;
     }
-    
+
     public void setContrasenia(String contra){
         this.contrasenia = contra;
     }
@@ -76,7 +76,7 @@ public class Administrador {
     public String getContrasenia(){
         return this.contrasenia;
     }
-    
+
     public void registroAdministrador() 
     {
         System.out.println("-------------------------------------------");
@@ -268,8 +268,6 @@ public class Administrador {
             for(int i = 0; i<cedulas.size();i++){
                 if(cedulas.get(i) == comproCed){
                     posicion=i;
-                }else if(((this.cedulaRepresentante!=0) && (this.cedulaRepresentante==comproCed))){
-                    posicion=0;
                 }
             }
             if(posicion<0){
@@ -281,7 +279,7 @@ public class Administrador {
             System.out.print("Ingresa la contraseña\n--->");
             comproContra = entrada.next();
 
-            if(contrasenias.get(posicion).equals(comproContra) || (((this.contrasenia!=null) && (this.contrasenia.equals(comproContra))))){
+            if(contrasenias.get(posicion).equals(comproContra)){
                 System.out.println("\n-------------------------------------------");
                 System.out.println("|            HA INICIADO SESIÓN           |");
                 System.out.println("-------------------------------------------\n");
