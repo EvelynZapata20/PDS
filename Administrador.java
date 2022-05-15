@@ -145,7 +145,7 @@ public class Administrador {
                 escribir = new FileWriter(archivo,true);
                 linea = new PrintWriter(escribir);
                 linea.print("Representantee"+this.representanteLegal+"Cedulaa"+this.cedulaRepresentante+"Telefonoo"+this.telefono+"nitt"+this.nit+
-                    "correoo"+this.correoElectronico+"negocioo"+this.nombreTienda+"Numeroo"+this.numeroLocal+"contraa"+this.contrasenia+"\n");
+                    "correoo"+this.correoElectronico+"negocioo"+this.nombreTienda+"Numeroo"+this.numeroLocal+"contraa"+this.contrasenia+"-----\n");
                 linea.close();
                 escribir.close();
             }
