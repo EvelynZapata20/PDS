@@ -6,7 +6,7 @@ public class Administrador {
     private Scanner entrada = new Scanner(System.in);
     private String representanteLegal;
     private int cedulaRepresentante;
-    private int telefono;
+    private long telefono;
     private long nit;
     private String correoElectronico;
     private String nombreTienda;
@@ -29,11 +29,11 @@ public class Administrador {
         return this.cedulaRepresentante;
     }
 
-    public void setTelefono(int telefono){
+    public void setTelefono(long telefono){
         this.telefono = telefono;
     }
 
-    public int getTelefono(){
+    public long getTelefono(){
         return this.telefono;
     }
 
@@ -90,7 +90,7 @@ public class Administrador {
         this.cedulaRepresentante = entrada.nextInt();
         System.out.println("--------------------------------------");
         System.out.print("  Teléfono fijo: \n--->");
-        this.telefono = entrada.nextInt();
+        this.telefono = entrada.nextLong();
         System.out.println("--------------------------------------");
         System.out.print("  NIT: \n--->");
         this.nit = entrada.nextLong();
