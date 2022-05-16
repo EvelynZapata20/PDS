@@ -141,7 +141,6 @@ public class Administrador {
             try
             {
                 archivo.createNewFile();
-                this.telefono = 123;
                 escribir = new FileWriter(archivo,true);
                 linea = new PrintWriter(escribir);
                 linea.print("Representantee"+this.representanteLegal+"Cedulaa"+this.cedulaRepresentante+"Telefonoo"+this.telefono+"nitt"+this.nit+
@@ -156,7 +155,6 @@ public class Administrador {
         }else{
             try
             {
-                this.telefono = 123;
                 escribir = new FileWriter(archivo,true);
                 linea = new PrintWriter(escribir);
                 linea.print("Representantee"+this.representanteLegal+"Cedulaa"+this.cedulaRepresentante+"Telefonoo"+this.telefono+"nitt"+this.nit+
